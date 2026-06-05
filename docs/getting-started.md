@@ -6,7 +6,7 @@ Get an AI chat assistant answering questions from your website in under 5 minute
 
 ## 1. Create an account
 
-Go to [aiml.chat/register](https://aiml.chat/register) and sign up with your email.
+Go to [aiml.chat/register](https://aiml.chat/register) and sign up with your email — or use **Continue with Google** for one-click sign-in.
 
 ---
 
@@ -32,6 +32,8 @@ Click **Start indexing** (or call `POST /v1/websites/{id}/ingest`). AIML.chat wi
 4. Generate vector embeddings and store them
 
 Indexing runs in the background. Watch progress on the website status page.
+
+Beyond crawling your domain, you can add more **knowledge sources** — a public GitHub repo, an uploaded PDF / Word doc, pasted text, or an external MCP server — from the website's **Sources** tab. See the [API reference](./api-reference.md#knowledge-sources).
 
 ```bash
 # Trigger indexing via API

@@ -1,0 +1,65 @@
+# Shopify App
+
+Add the AIML.chat AI assistant to your Shopify storefront. The app installs the widget via a Theme App Extension and auto-indexes your store content — no theme code required.
+
+---
+
+## Install
+
+1. Install the **AIML Chat** app from the Shopify App Store (or your Partner dev store during testing).
+2. On install, the app registers your store with AIML.chat and starts indexing your products, pages, and policies automatically.
+3. Open the app from your Shopify admin to see indexing status.
+
+---
+
+## Enable the widget
+
+The widget is delivered as a **Theme App Extension**:
+
+1. In Shopify admin, go to **Online Store → Themes → Customize**.
+2. Open **App embeds** (bottom of the left sidebar).
+3. Toggle **AIML Chat** on.
+4. Configure position, theme, and brand colour, then **Save**.
+
+The widget appears as a floating chat button on all storefront pages.
+
+---
+
+## Settings
+
+Configured in the theme editor under the AIML Chat app embed:
+
+| Setting | Description |
+|---------|-------------|
+| Enable chat widget | Show/hide the widget |
+| API Key | Your `aiml_pk_...` key (auto-filled on install) |
+| Website ID | Identifies your store — **required for lead capture** |
+| Widget position | Bottom right or bottom left |
+| Colour theme | Auto, light, or dark |
+| Primary colour | Accent colour to match your brand |
+
+Greeting message, title, and suggested questions are configured in your [AIML.chat dashboard](https://aiml.chat/dashboard).
+
+---
+
+## Re-indexing
+
+Content is re-indexed on a schedule, but after a big catalogue or policy change you can trigger it manually from the app's dashboard with **Re-index store content**.
+
+---
+
+## Privacy & GDPR
+
+The app implements all of Shopify's mandatory GDPR webhooks:
+
+- `customers/data_request` — returns any leads stored for that customer
+- `customers/redact` — deletes that customer's leads
+- `shop/redact` — deletes all store data after uninstall
+
+The widget itself uses `sessionStorage` (no tracking cookies).
+
+---
+
+## Uninstall
+
+Removing the app marks your install inactive and stops the widget. Store data is deleted following Shopify's `shop/redact` window.

@@ -28,12 +28,16 @@ Go to **Settings → AIML Chat** in your WordPress admin.
 | Setting | Description |
 |---------|-------------|
 | API Key | Your `aiml_pk_...` key from the dashboard |
+| Website ID | Your website ID — **required for lead capture** |
 | Enable widget | Toggle the widget on/off site-wide |
 | Position | `right` (default) or `left` |
 | Theme | `auto`, `light`, or `dark` |
-| Excluded pages | Comma-separated page IDs where the widget is hidden |
+| Brand Colour | Optional hex accent colour (e.g. `#4f46e5`) |
+| Exclude pages | URL paths (one per line) where the widget is hidden |
 
 Save changes — the widget will appear on all non-excluded pages.
+
+> Enter your **Website ID** (next to the API key in the dashboard) to enable lead capture — when the assistant can't answer, it invites the visitor to leave their email. Requires plugin **v1.1.0+**.
 
 ---
 
@@ -68,13 +72,15 @@ After installing the plugin:
 
 ## Excluding pages
 
-Enter page IDs in the **Excluded pages** field (comma-separated):
+Enter URL paths in the **Exclude pages** field, one per line. The widget is hidden on any page whose path matches (or starts with) a listed path:
 
 ```
-42, 100, 205
+/cart
+/checkout
+/my-account
 ```
 
-To find a page ID: edit the page in WordPress and look at the URL — `post=42` is the ID.
+You can also place the widget on specific pages only with the `[aiml_chat]` shortcode or the **AIML.chat Widget** block instead of the site-wide toggle.
 
 ---
 

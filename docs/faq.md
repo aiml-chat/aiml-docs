@@ -25,9 +25,13 @@ Small sites (< 100 pages) typically index in under 2 minutes. Larger sites can t
 
 **What content types are supported?**  
 - HTML pages (crawled via URL)
-- PDF files (uploaded or linked)
-- Markdown files (direct upload or GitHub repo URL)
+- PDF and Word (`.docx`) files (uploaded)
+- Markdown / plain text (direct upload, pasted text, or GitHub repo URL)
 - Sitemaps (auto-detected at `/sitemap.xml`)
+- External MCP servers (their resources are indexed as a source)
+
+**Do you support MCP (Model Context Protocol)?**  
+Both directions. Your knowledge base is exposed as an MCP server at `https://api.aiml.chat/mcp` (authenticate with your `aiml_pk_` key) with a `search_knowledge_base` tool, and you can add an external MCP server as a knowledge source. See the [MCP guide](./mcp.md).
 
 **Does it respect robots.txt?**  
 Yes. AIML.chat checks `robots.txt` before crawling any URL and skips disallowed paths.
@@ -56,6 +60,9 @@ No — the widget is a client-side component. Users with JS disabled won't see t
 
 **Is there a React/Vue component?**  
 Not yet — the widget is vanilla JS with Shadow DOM for maximum compatibility. A React wrapper is on the roadmap.
+
+**Is there a Shopify app?**  
+Yes. The Shopify app installs the widget via a Theme App Extension and auto-indexes your products, pages, and policies. See the [Shopify guide](./shopify.md).
 
 ---
 

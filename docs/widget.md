@@ -28,7 +28,10 @@ The AIML.chat widget is a vanilla JS Shadow DOM component (`<30KB` gzipped). It 
 | `data-position` | `right` | `right`, `left` |
 | `data-theme` | `auto` | `light`, `dark`, `auto` |
 | `data-primary-color` | — | Any CSS color |
+| `data-suggested-questions` | — | `|`-separated starter questions, e.g. `How do I install?|What's the price?` |
 | `data-api-url` | `https://api.aiml.chat` | Override for self-hosted |
+
+> `data-website-id` is **required for lead capture** — without it the assistant can still answer, but it can't collect a visitor's email when it has no answer.
 
 ---
 
@@ -43,6 +46,17 @@ The following are configured per-website in the dashboard under **Widget setting
 | Placeholder | Input placeholder text |
 | Greeting message | First message shown when widget opens |
 | Show branding | Toggle "Powered by aiml.chat" badge (paid plans) |
+
+---
+
+## Suggested questions, FAQ & lead capture
+
+When the chat opens it greets the visitor and shows **suggested questions** so the box is never empty. These come from (in priority order):
+
+1. `data-suggested-questions` on the script tag
+2. Questions configured per-website in the dashboard (including the auto-generated FAQ)
+
+When the assistant can't answer a question from your content, it shows an honest deflection and — if `data-website-id` is set — a **lead capture** form that emails you the visitor's address and question. Set the recipient in **Widget settings**.
 
 ---
 

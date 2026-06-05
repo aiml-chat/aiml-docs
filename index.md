@@ -7,6 +7,8 @@ Welcome to the AIML.chat documentation.
 - [Getting Started](./docs/getting-started.md) — Register, index, embed
 - [Widget Customisation](./docs/widget.md) — CSS variables, JS API, events
 - [WordPress Plugin](./docs/wordpress.md) — Install and configure
+- [Shopify App](./docs/shopify.md) — Install and enable on your storefront
+- [MCP (Model Context Protocol)](./docs/mcp.md) — Server & client integration
 - [FAQ & Troubleshooting](./docs/faq.md) — Common questions
 
 ## Reference

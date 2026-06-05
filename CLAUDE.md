@@ -10,6 +10,8 @@ docs/
   api-reference.md
   widget.md
   wordpress.md
+  shopify.md
+  mcp.md
   faq.md
 index.md
 CONTRIBUTING.md

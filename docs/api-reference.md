@@ -72,6 +72,90 @@ POST /v1/auth/refresh
 
 ---
 
+### Sign in with Google
+
+Exchange a Google ID token (obtained client-side via Google Sign-In) for AIML tokens. Creates the account on first use.
+
+```
+POST /v1/auth/google
+```
+
+```json
+{ "idToken": "google-id-token" }
+```
+
+**Response 200** — same shape as login (`accessToken`, `refreshToken`, `tenantId`).
+
+---
+
+### Forgot password
+
+Always returns 200 (it never reveals whether an account exists). If the email matches an account, a reset link is sent.
+
+```
+POST /v1/auth/forgot-password
+```
+
+```json
+{ "email": "you@example.com" }
+```
+
+**Response 200**
+```json
+{ "message": "If an account exists for that email, a reset link is on its way." }
+```
+
+---
+
+### Reset password
+
+```
+POST /v1/auth/reset-password
+```
+
+```json
+{ "email": "you@example.com", "token": "from-the-email-link", "newPassword": "newsecurepassword" }
+```
+
+**Response 200** on success; **400** if the link is invalid or expired.
+
+---
+
+### Get account
+
+```
+GET /v1/account
+Authorization: Bearer <token>
+```
+
+**Response 200**
+```json
+{ "email": "you@example.com", "hasPassword": true }
+```
+
+`hasPassword` is `false` for Google-only accounts — the dashboard uses it to show "Set a password" instead of "Change password".
+
+---
+
+### Change / set password
+
+Requires a logged-in session. If the account has **no password yet** (signed up with Google), this
+**sets** one and `currentPassword` is ignored. Otherwise it **changes** the password and `currentPassword`
+must match.
+
+```
+POST /v1/account/password
+Authorization: Bearer <token>
+```
+
+```json
+{ "currentPassword": "old (omit/empty when setting a first password)", "newPassword": "new" }
+```
+
+**Response 200** on success; **400** if the current password is required and wrong.
+
+---
+
 ## Websites
 
 ### List websites
@@ -162,6 +246,95 @@ Ingestion runs in the background. Poll `/status` to check progress.
 ```json
 { "message": "Ingestion started." }
 ```
+
+---
+
+## Knowledge Sources
+
+Beyond crawling your domain, you can attach additional sources to a website. Each is indexed by the same background pipeline. Domain ownership must be verified first.
+
+### Add a source
+
+```
+POST /v1/websites/{id}/sources
+Authorization: Bearer <token>
+```
+
+```json
+{
+  "sourceType": "Url | Sitemap | Text | GitHub | Mcp",
+  "url": "https://example.com or repo / MCP server URL",
+  "branch": "main",
+  "crawlDepth": 3,
+  "text": "raw text when sourceType = Text",
+  "authType": "None | Bearer | CustomHeader",
+  "authToken": "secret for protected MCP servers (stored encrypted)",
+  "authHeaderName": "X-Api-Key (when authType = CustomHeader)",
+  "mcpTools": "comma-separated tool/resource filter (optional)"
+}
+```
+
+**Response 202** — source accepted and queued for indexing.
+
+### Upload a file
+
+Accepts PDF, Word (`.docx`), Markdown, and plain text via `multipart/form-data`.
+
+```
+POST /v1/websites/{id}/sources/upload
+Authorization: Bearer <token>
+Content-Type: multipart/form-data
+```
+
+Form field `file` — the document to index.
+
+### Index a GitHub repository
+
+```
+POST /v1/websites/{id}/ingest/github
+Authorization: Bearer <token>
+```
+
+```json
+{ "repoUrl": "https://github.com/owner/repo" }
+```
+
+Extracts Markdown from the repo's default branch (override with a `/tree/<branch>` URL).
+
+### List sources
+
+```
+GET /v1/websites/{id}/sources
+Authorization: Bearer <token>
+```
+
+Returns each source with its `status` and `lastError` (if a sync failed).
+
+### Re-sync a source
+
+```
+POST /v1/sources/{sourceId}/resync
+Authorization: Bearer <token>
+```
+
+**Response 202** — re-fetches and re-embeds the source.
+
+---
+
+## MCP Server
+
+Every website's knowledge base is also exposed as a **Model Context Protocol** server over Streamable HTTP, so AI agents (Claude, IDEs, custom agents) can query it as a tool.
+
+```
+POST https://api.aiml.chat/mcp
+X-Api-Key: aiml_pk_...
+```
+
+- **Transport:** Streamable HTTP (MCP spec)
+- **Auth:** your publishable `aiml_pk_...` key in the `X-Api-Key` header
+- **Tool:** `search_knowledge_base` — semantic search over that website's indexed content
+
+See the [MCP guide](./mcp.md) for client setup examples.
 
 ---
 
