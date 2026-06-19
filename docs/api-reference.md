@@ -62,10 +62,10 @@ POST /v1/auth/refresh
 ```
 
 ```json
-{ "refreshToken": "..." }
+{ "email": "you@example.com", "refreshToken": "..." }
 ```
 
-**Response 200**
+**Response 200** — issues a fresh access token. The refresh token stays valid (it isn't rotated) until you log in again or sign out.
 ```json
 { "accessToken": "eyJ...", "refreshToken": "..." }
 ```
@@ -359,6 +359,8 @@ Content-Type: application/json
   ]
 }
 ```
+
+> **Origin binding:** `/v1/chat` and `/v1/leads` are bound to your website's domain — the request must carry an `Origin` (or `Referer`) matching your registered domain, its `www`/apex variant, or a domain you've allow-listed under **Widget settings → Allowed domains**. Other origins get `403 origin_not_allowed`. Browsers send `Origin` automatically, so the widget works on your site with no extra setup; scripted/server-side callers must set it explicitly.
 
 **Response: Server-Sent Events stream**
 

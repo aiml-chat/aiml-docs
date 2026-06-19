@@ -60,6 +60,26 @@ When the assistant can't answer a question from your content, it shows an honest
 
 ---
 
+## Test it live in your dashboard
+
+You don't have to deploy the snippet to try your assistant. Open your website's **Widget** tab in the dashboard — once the site has an API key, the preview is a **live copy of the real widget** (same suggested questions, FAQ, source citations and lead capture your visitors get). Appearance changes you make in the form are reflected immediately, so you can tune the look and test real answers in one place.
+
+> Preview chats hit the real pipeline, so they count toward your plan's monthly message quota.
+
+---
+
+## Allowed domains (key security)
+
+Your publishable `aiml_pk_` key ships in your page source — that's expected (it works like a Stripe publishable key). To stop someone copying it onto an unrelated site and burning your quota, widget **chat and lead-capture** requests are bound to your domain:
+
+- Your **registered domain** (and its `www`/apex variant) is always allowed.
+- Add any other domains the widget legitimately runs on — a staging host, a second TLD — under **Widget settings → Allowed domains** (one per line).
+- Requests from any other origin are refused with `403 origin_not_allowed`.
+
+If the widget loads but answers fail with *"not authorized for this domain"*, add the domain you're embedding on to the **Allowed domains** list.
+
+---
+
 ## CSS custom properties
 
 The widget respects these CSS custom properties (set them on `:root` or via `data-primary-color`):

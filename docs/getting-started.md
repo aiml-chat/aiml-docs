@@ -60,11 +60,17 @@ Add one script tag before `</body>` on your site:
 
 The widget loads asynchronously — it never blocks your page render.
 
+> **Tip:** the dashboard **Integrations** tab has the snippet above with your key and Website ID already filled in, a one-click **WordPress plugin** download, and **Shopify** instructions — so you can copy/install without hand-editing anything.
+
 ---
 
-## 5. Verify it works
+## 5. Test it — in the dashboard or on your site
 
-Open your site in a browser and click the chat bubble. Ask a question about your content. You should see a streamed response with source citations.
+You can chat with your assistant **before you deploy anything**: open your website's **Widget** tab and use the live preview — it's the real widget, with your suggested questions, FAQ and citations.
+
+Then verify the embed: open your site in a browser, click the chat bubble, and ask a question about your content. You should see a streamed response with source citations.
+
+> If the widget loads but answers fail with *"not authorized for this domain"*, your key is bound to your registered domain. Add the domain you're testing on under **Widget settings → Allowed domains**. See [Widget customisation](./widget.md#allowed-domains-key-security).
 
 ---
 

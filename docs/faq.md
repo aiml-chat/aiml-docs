@@ -62,7 +62,10 @@ No — the widget is a client-side component. Users with JS disabled won't see t
 Not yet — the widget is vanilla JS with Shadow DOM for maximum compatibility. A React wrapper is on the roadmap.
 
 **Is there a Shopify app?**  
-Yes. The Shopify app installs the widget via a Theme App Extension and auto-indexes your products, pages, and policies. See the [Shopify guide](./shopify.md).
+A one-click Shopify app is in review and coming to the App Store soon. In the meantime you can add the widget to your store manually via your theme's `theme.liquid` (the **Integrations** tab in your dashboard has the snippet ready). See the [Shopify guide](./shopify.md).
+
+**Can I test the widget before adding it to my site?**  
+Yes. Open your website's **Widget** tab in the dashboard — the preview is a live copy of the real widget you can chat with. Test messages count toward your monthly quota.
 
 ---
 
@@ -111,6 +114,9 @@ Re-index after making significant content changes. If certain pages should be pr
 2. Check the API key is saved in Settings → AIML Chat
 3. Confirm the page isn't in the excluded pages list
 4. Look for JS errors in the browser console
+
+**The widget says "not authorized for this domain" (403)**  
+Your publishable key is bound to your registered domain (plus its `www`/apex variant). If you embed the widget on another domain — a staging host or a second TLD — add it under **Widget settings → Allowed domains**. See [Widget customisation](./widget.md#allowed-domains-key-security).
 
 **Rate limit errors (429)**  
 The free plan has a rate limit of 10 requests/hour per IP. Upgrade to Pro or above for higher limits. The `Retry-After` header tells you how many seconds to wait.

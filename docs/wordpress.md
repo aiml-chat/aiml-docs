@@ -1,23 +1,24 @@
 # WordPress Plugin
 
-The AIML.chat WordPress plugin adds an AI assistant to any WordPress site. It's available from the WordPress plugin directory.
+The AIML.chat WordPress plugin adds an AI assistant to any WordPress site.
 
 ---
 
 ## Installation
 
-### From the plugin directory (recommended)
+### Download from your dashboard (available now)
+
+1. In your [AIML.chat dashboard](https://aiml.chat/dashboard), open the **Integrations** tab and download the WordPress plugin (`.zip`).
+2. In your WordPress admin: **Plugins → Add New → Upload Plugin**.
+3. Upload the zip, click **Install Now**, then **Activate**.
+
+### From the WordPress.org directory (coming soon)
+
+Once the plugin is approved on WordPress.org you'll be able to install it without downloading anything:
 
 1. In your WordPress admin: **Plugins → Add New**
-2. Search for **AIML Chat**
+2. Search for **AIML.chat**
 3. Click **Install Now**, then **Activate**
-
-### Manual installation
-
-1. Download `aiml-chat.zip` from your [AIML.chat dashboard](https://aiml.chat/dashboard)
-2. Go to **Plugins → Add New → Upload Plugin**
-3. Upload the zip and click **Install Now**
-4. Activate the plugin
 
 ---
 

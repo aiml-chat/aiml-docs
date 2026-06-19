@@ -1,18 +1,31 @@
-# Shopify App
+# Shopify
 
-Add the AIML.chat AI assistant to your Shopify storefront. The app installs the widget via a Theme App Extension and auto-indexes your store content — no theme code required.
+Add the AIML.chat AI assistant to your Shopify storefront.
+
+> **The one-click Shopify app is in review and not yet on the App Store.** Until it's listed, add the widget manually (below) — it takes a minute. The app sections that follow describe the experience once it's published.
 
 ---
 
-## Install
+## Manual install (available now)
 
-1. Install the **AIML Chat** app from the Shopify App Store (or your Partner dev store during testing).
+1. In your [AIML.chat dashboard](https://aiml.chat/dashboard), open the **Integrations** tab and copy your Shopify snippet — your API key and Website ID are already filled in.
+2. In your Shopify admin: **Online Store → Themes → Edit code**.
+3. Open `theme.liquid` and paste the snippet just before the closing `</body>` tag.
+4. **Save.** The assistant now appears on every storefront page.
+
+Appearance (title, greeting, colour, suggested questions) is managed centrally in your dashboard under **Widget settings**.
+
+---
+
+## App install (when published)
+
+1. Install the **AIML.chat** app from the Shopify App Store (or your Partner dev store during testing).
 2. On install, the app registers your store with AIML.chat and starts indexing your products, pages, and policies automatically.
 3. Open the app from your Shopify admin to see indexing status.
 
 ---
 
-## Enable the widget
+## Enable the widget (app)
 
 The widget is delivered as a **Theme App Extension**:
 
